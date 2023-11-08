@@ -1,0 +1,297 @@
+{% extends 'base.html' %} {% block content%}
+<head>
+  <style>
+    .star:hover {
+      cursor: pointer;
+    }
+    .star_rating {
+      user-select: none;
+    }
+    .star {
+      font-size: 2rem;
+      color: orange;
+      background-color: unset;
+      border: none;
+    }
+  </style>
+</head>
+<!--Main layout-->
+<main class="mt-5 pt-4">
+  <div class="container mt-5">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-md-6 mb-5 text-center">
+        <img src="{{ object.gambar.url }}" class="img-fluid" alt="" />
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Content-->
+        <div class="p-4">
+          <div class="mb-3">
+            <a href="">
+              <span class="badge bg-dark me-1"
+                >{{ object.get_kategori_display }}</span
+              >
+            </a>
+            {% if object.label == 'NEW' %}
+            <a href="">
+              <span class="badge bg-{{ object.get_label_display }} me-1"
+                >New</span
+              >
+            </a>
+            {% elif object.label == 'SALE' %}
+            <a href="">
+              <span class="badge bg-{{ object.get_label_display }} me-1"
+                >Sale</span
+              >
+            </a>
+            {% else %}
+            <a href="">
+              <span class="badge bg-{{ object.get_label_display }} me-1"
+                >Bestseller</span
+              >
+            </a>
+            {% endif %}
+          </div>
+
+          <p class="lead">
+            {% if object.harga_diskon %}
+            <span class="me-1">
+              <del>${{ object.harga }}</del>
+            </span>
+            <span>${{ object.harga_diskon }}</span>
+            {% else %}
+            <span>${{ object.harga }}</span>
+            {% endif %}
+          </p>
+
+          <p style="font-size: 14px; color: #808080">
+            <i class="fa-solid fa-star" style="color: orange"></i>
+            <i class="fa-solid fa-star" style="color: orange"></i>
+            <i class="fa-solid fa-star" style="color: orange"></i>
+            <i class="fa-solid fa-star" style="color: orange"></i>
+            <i class="fa-solid fa-star" style="color: orange"></i>
+            &nbsp 4.9 dari 200 reviews
+          </p>
+
+          <strong><p style="font-size: 20px">Deskripsi</p></strong>
+
+          <p>{{ object.deskripsi }}</p>
+          <a
+            href="{{ object.get_add_to_cart_url }}"
+            class="btn btn-primary ms-1 mt-3 mb-3"
+          >
+            Tambah ke keranjang
+            <i class="fas fa-shopping-cart ms-1"></i>
+          </a>
+          <a
+            href="{{ object.get_remove_from_cart_url }}"
+            class="btn btn-danger ms-1 mb-3"
+          >
+            Kurangi keranjang
+            <i class="fas fa-shopping-cart ms-1"></i>
+          </a>
+        </div>
+        <!--Content-->
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+    <hr />
+
+    <!--Grid row-->
+    <div class="row d-flex justify-content-center">
+      <!--Grid column-->
+      <div class="col-md-6 mb-5 text-center">
+        <h4 class="my-4 h4">Komentar</h4>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+    <div class="row mb-5">
+      <div class="col-lg-6 mb-3">
+        <div class="col-lg-10 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img
+                    src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1688718270~exp=1688718870~hmac=1ec29e7ecd66c50da600584373269c7246ca3ac568c345d6d40cbdfe8baeab76"
+                    width="50"
+                    height="50"
+                    class="rounded-circle"
+                  />
+                </div>
+                <div
+                  class="col-10 text-start"
+                  style="font-size: 10px; color: #808080; padding-bottom: 0px"
+                >
+                  <b style="font-size: 14px">Susi Setianingsih</b>
+                  <br />
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <br />5 April 2023
+                </div>
+              </div>
+
+              <p class="card-text mt-3">
+                Marketplace terbaik yang pernah aku temui sepanjang hidup:D
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-10 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img
+                    src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1688718270~exp=1688718870~hmac=1ec29e7ecd66c50da600584373269c7246ca3ac568c345d6d40cbdfe8baeab76"
+                    width="50"
+                    height="50"
+                    class="rounded-circle"
+                  />
+                </div>
+                <div
+                  class="col-10 text-start"
+                  style="font-size: 10px; color: #808080; padding-bottom: 0px"
+                >
+                  <b style="font-size: 14px">Deri Septiani Waruru</b>
+                  <br />
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <br />16 Juni 2023
+                </div>
+              </div>
+
+              <p class="card-text mt-3">
+                Bagus banget. Bakalan langganan disini sii... Mantap!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-10 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-2">
+                  <img
+                    src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1688718270~exp=1688718870~hmac=1ec29e7ecd66c50da600584373269c7246ca3ac568c345d6d40cbdfe8baeab76"
+                    width="50"
+                    height="50"
+                    class="rounded-circle"
+                  />
+                </div>
+                <div
+                  class="col-10 text-start"
+                  style="font-size: 10px; color: #808080; padding-bottom: 0px"
+                >
+                  <b style="font-size: 14px">Dina Fitria</b>
+                  <br />
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <i class="fa-solid fa-star" style="color: orange"></i>
+                  <br />7 Juli 2023
+                </div>
+              </div>
+
+              <p class="card-text mt-3">
+                Sangat Rekomendasi nih! Barangnya berkualitas semua.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-3">
+        <div class="row mt-3">
+          <h5>Beri Rating</h5>
+          <div class="star_rating">
+            <button class="star">&#9734;</button>
+            <button class="star">&#9734;</button>
+            <button class="star">&#9734;</button>
+            <button class="star">&#9734;</button>
+            <button class="star">&#9734;</button>
+          </div>
+          <p class="current_rating" style="font-size: 14px">0 dari 5</p>
+        </div>
+        <div class="row mt-3">
+          <h5>Beri Komentar</h5>
+          <div class="input-group mt-3">
+            <textarea
+              class="form-control lg-10"
+              aria-label="With textarea"
+              placeholder="Tulis komentarmu disini!"
+              style="height: 20vh"
+            ></textarea>
+          </div>
+          <div class="d-grid gap-2 d-md-block mt-3">
+            <button class="btn btn-primary" type="button">Kirim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <!--Grid row-->
+    <div class="row d-flex justify-content-center">
+      <!--Grid column-->
+      <div class="col-md-6 text-center">
+        <h4 class="my-4 h4">Additional information</h4>
+
+        <p>
+          Menampilkan foto produk yang akan segera tersedia di dalam Toko. Oleh
+          karena itu, jangan lupa sering mampir ke Toko kami! :D
+        </p>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+
+    <!--Grid row-->
+    <div class="row text-center mt-5 mb-5">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4">
+        <img
+          src="https://img.freepik.com/free-photo/fashion-portrait-young-elegant-woman_1328-2733.jpg?w=360&t=st=1688719679~exp=1688720279~hmac=5c3b70882ecef19108cce247aa00cadd5f20eb5f775ee4c8dc52e47f805c4959"
+          class="img-fluid"
+          alt=""
+        />
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <img
+          src="https://img.freepik.com/free-photo/young-woman-model-wearing-long-gray-coat_1303-21156.jpg?w=360&t=st=1688719460~exp=1688720060~hmac=bfdb0f32c4aa3af0a07dfabb2070c5904aa390bb463dc726470cc49e6e4221bc"
+          class="img-fluid"
+          alt=""
+        />
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <img
+          src="https://img.freepik.com/free-photo/man-gray-shirt-pants-casual-wear-fashion-full-body_53876-102101.jpg?w=360&t=st=1688719504~exp=1688720104~hmac=1452a1ea245c8656c330b47f7df5e2682159e519bf597a176da0f6f7fa99ebb0"
+          class="img-fluid"
+          alt=""
+        />
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
+<!--Main layout-->
+{% endblock content%}
